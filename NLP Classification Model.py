@@ -33,7 +33,7 @@ beer_df.dropna(inplace= True)
 
 
 def text_process(text):
-    nopunc= [char for char in msg if char not in string.punctuation]
+    nopunc= [char for char in text if char not in string.punctuation]
     nopunc= ''.join(nopunc)
     return ' '.join([word for word in nopunc.split() if word.lower() not in stopwords.words('english')])
 
