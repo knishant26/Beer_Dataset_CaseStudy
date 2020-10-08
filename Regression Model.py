@@ -74,16 +74,11 @@ print(accuracies.mean(), '\n\n')
 print('*********XGBoost Model*********')
 import xgboost
 
-xgb_model = xgboost.XGBRegressor(colsample_bytree=0.4,
-                 gamma=0,                 
+xgb_model = xgboost.XGBRegressor(gamma=0.2,                 
                  learning_rate=0.07,
                  max_depth=3,
                  min_child_weight=1.5,
-                 n_estimators=10000,                                                                    
-                 reg_alpha=0.75,
-                 reg_lambda=0.45,
-                 subsample=0.6,
-                 seed=42)
+                 n_estimators=10000)
 
 xgb_model.fit(X_train, y_train)
 
