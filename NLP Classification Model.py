@@ -51,7 +51,7 @@ beer_df['Filtered Review Text'] = beer_df['Filtered Review Text'].apply(lemmatiz
 
 print('lemmatization done')
 
-cvec = CountVectorizer(min_df=.005, max_df=.9, ngram_range=(1,2), tokenizer=lambda doc: doc, lowercase=False)
+cvec = CountVectorizer(min_df=.005, max_df=.9, ngram_range=(1,2))
 cvec.fit(beer_df['Filtered Review Text'])
 
 print(len(cvec.vocabulary_))
@@ -86,7 +86,7 @@ y = ml_model['review/overall'].astype(str)
 X_train, X_test, y_train, y_test= train_test_split(X,y, test_size= 0.3)
 
 
-sgd= SGDClassifier(loss='hinge', penalty='l2', alpha=1e-3, random_state=42, max_iter=5, tol=None)
+sgd= SGDClassifier()
 sgd.fit(X_train, y_train)
 
 y_pred = sgd.predict(X_test)
